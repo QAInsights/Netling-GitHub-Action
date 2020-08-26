@@ -7,14 +7,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         
-      - name: Run JMeter Tests
+      - name: Run Netling Tests
         uses: ./
         with:
-          test-plan-path: ./TestPlans/S01_SimpleExample/S01_SimpleExample.jmx
-          args: ""
-          
-      - name: Upload Results
-        uses: actions/upload-artifact@v2
-        with:
-          name: jmeter-results
-          path: result.jtl
+          url: "https://example.com"
+          threads: "1"
+          duration: "10"
