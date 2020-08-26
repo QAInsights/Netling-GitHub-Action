@@ -1,1 +1,30 @@
+# action.yml
+name: Netling
+description: Run performance tests using Netling
+author: NaveenKumar Namachivayam - https://qainsights.com
 
+branding:
+  color: blue
+  icon: zap
+
+inputs:
+  url:
+    required: true
+    description: jmeter test plan to execute
+  threads:
+    required: true
+    description: number of threads to inject
+  duration:
+    required: true
+    description: duration of your test
+  
+runs:
+  using: 'docker'
+  image: 'docker://qainsights/netling'
+  args:
+  - "-n"
+  - "-t"
+  - "${{ inputs.test-plan-path }}"
+  - "-l"
+  - "result.jtl"
+  - "${{ inputs.args }}"
