@@ -10,7 +10,7 @@ branding:
 inputs:
   url:
     required: true
-    description: jmeter test plan to execute
+    description: url to test
   threads:
     required: true
     description: number of threads to inject
@@ -22,9 +22,8 @@ runs:
   using: 'docker'
   image: 'docker://qainsights/netling'
   args:
-  - "-n"
+  - "${{ inputs.url }}"
   - "-t"
-  - "${{ inputs.test-plan-path }}"
-  - "-l"
-  - "result.jtl"
-  - "${{ inputs.args }}"
+  - "${{ inputs.threads }}"
+  - "-d"
+  - "${{ inputs.duration }}"
